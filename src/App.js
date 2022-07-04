@@ -1,11 +1,14 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [movie, setMovie] = useState([]);
-  fetch('https://k2maan-moviehut.herokuapp.com/api/random')
+
+  useEffect(() => {
+    fetch('https://k2maan-moviehut.herokuapp.com/api/random')
     .then(response => response.json())
     .then(data => setMovie(data))
+  }, [])
 
   movie && console.log(movie)
 
