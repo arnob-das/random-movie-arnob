@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [movie, setMovie] = useState([]);
+  fetch('https://k2maan-moviehut.herokuapp.com/api/random')
+    .then(response => response.json())
+    .then(data => setMovie(data))
+
+  movie && console.log(movie)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App p-5 m-5">
+      <h1>{movie?.name}</h1>
+      <h4>Release Year: {movie.releaseYear}</h4>
+      <h3>Duration: {movie.runtime}</h3>
+      <h4>Genre: {movie.genre}</h4>
+      <h4>IMDB Rating: {movie.imdbRating}</h4>
+      <h5>Director: {movie.director}</h5>
+      <p>Overview: {movie.overview}</p>
     </div>
   );
 }
