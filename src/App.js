@@ -10,7 +10,7 @@ function App() {
     .then(data => setMovie(data))
   }, [])
 
-  movie && console.log(movie)
+  //movie && console.log(movie)
 
   return (
     <div className="App p-5 m-5">
